@@ -10,13 +10,9 @@
 %
 \makeindex
 %
-\newcommand{\diff}{\mathrm{d}}  %微分記号
-\newcommand{\divergence}{\mathrm{div}\,}  %ダイバージェンス
-\newcommand{\grad}{\mathrm{grad}\,}  %グラディエント
-\newcommand{\rot}{\mathrm{rot}\,}  %ローテーション
-%
 \newcommand{\lambdabar}{{\mkern0.75mu\mathchar '26\mkern -9.75mu\lambda}}
 \newcommand{\innerprod}[2]{\bm{#1} \cdot \bm{#2}}
+\newcommand{\derivative}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}\newcommand{\dderivative}[2]{\frac{\mathrm{d}^2 #1}{\mathrm{d} {#2}^2}}
 \newcommand{\partialder}[2]{\frac{\partial #1}{\partial #2}}
 %
 \setlength{\textwidth}{\fullwidth}
@@ -140,22 +136,87 @@ $n=1$ としたときの半径：
 \[
 	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
 \]
-ここで、古典論に対して以下の置き換えをする。
+ここで、古典論に対して以下の置き換えをする(\textbf{量子化の手続き})。
 \[
 	E \rightarrow i\hbar \partialder{}{t}, \ \ p_w \rightarrow \frac{\hbar}{i} \partialder{}{w}\ \ (w = x, y, z)
 \]
-先の波動方程式は、
+先の波動方程式は、\textbf{Schr\"odinger 方程式}（以降、\textbf{S-eq.}と略記）： 
 \[
 	i\hbar \partialder{\psi}{t} = H\psi
 \]
-となる。ここで\textbf{Hamiltonian}とよばれる演算子は、
+となる。ここで古典論からの類推により、\textbf{Hamiltonian}とよばれる演算子は、
 \[
 	H = \frac{-\hbar^2}{2m} \nabla^2 +V(\bm{r})
 \]
 と与えられる。
+
+\section{Born の確率解釈}
+波動関数$\psi(\bm{r},t)$は電子の存在確率を与える確率波と解釈する。
+すなわち、
+\[
+	[
+	\mathrm{Probability\ of\ an\ }e^-\ \mathrm{exist\ in\ }\mathrm{d}^3 r\ \mathrm{near\ } \bm{r}]
+	= |\psi(\bm{r},t)|^2 \mathrm{d}^3 r
+\]
+である。
+
+S-eq.：
+\[
+	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
+\]
+と、その複素共役(complex conjugate(c.c.))：
+\[
+	-i\hbar \partialder{\psi^\ast}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi^\ast
+\]
+から、
+\[
+	\partialder{}{t} \left( \psi^\ast \psi \right)
+	= \frac{-\hbar}{2mi} \nabla \cdot \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]
+\]
+となり、ここで\textbf{確率密度}：
+\[
+	\rho :=  \psi^\ast \psi = | \psi |^2
+\]
+および \textbf{確率の流れ}：
+\[\bm{j} := \frac{-\hbar}{2mi}\ \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]\]
+を定義すれば、さきの式は\textbf{確率の保存則}：
+\[\partialder{\rho}{t} + \innerprod{\nabla}{j} = 0\]
+を意味する。
+
+\section{定常状態・境界条件}
+\textbf{定常状態}とは、波動が進行せず、振幅のみが時間変化する波の状態である。
+このとき、波動関数は、
+\[ \psi(\bm{r}, t) = \phi(\bm{r}) f(t) \]
+とかける。
+
+S-eq.は、任意の$\bm{r}, t$に対して成り立つことを課すことにより、ある定数$E$をもちいて、
+\[
+	i\hbar \derivative{f(t)}{t} = Ef(t),\ \ \ H\phi(\bm{r}) = E\phi(\bm{r})
+\]
+となる。
+
+これより、
+\[
+	\psi(\bm{r}, t) = \phi(\bm{r}) \exp (-iEt/\hbar)
+\]
+とかけて、$E$はエネルギーに相当することがわかる。
+
+S-eq. は線型方程式であるから、固有状態$\{ \psi_i \}$の線形和である$\psi$もまた解となる。
+
+Hamilitonian の固有値$E_i$ 固有関数$\psi_i$ を求めることを\textbf{固有値問題}と呼ぶ。解を求めるためには境界条件を設定する必要がある。
+
+\begin{itemize}
+	\item 無限遠方で波動関数が0になる。：$\phi(\bm{r}\ \rightarrow\ \infty) = 0 $
+	\item ポテンシャル関数があるところで不連続である。：
+	S-eq. $\rightarrow$
+	\[
+			\dderivative{\phi(x)}{x} = \frac{-2m}{\hbar} [E-V(x)] \phi(x)
+	\]
+\end{itemize}
+
 \begin{thebibliography}{20}
  \bibitem{Sunagawa} 砂川重信、量子力学、岩波書店、1991.
- \bibitem{Shimizu} 清水明、新版 量子論の基礎 その本質のやさしい理解のために、サイエンス社、2003
+ \bibitem{Shimizu} 清水明、新版 量子論の基礎 その本質のやさしい理解のために、サイエンス社、2003.
 \end{thebibliography}
 \newpage
 \printindex
