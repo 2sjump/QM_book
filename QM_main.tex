@@ -7,6 +7,7 @@
 \usepackage{makeidx}
 \usepackage{url}
 \usepackage{braket}
+\usepackage{color}
 %
 \makeindex
 %
@@ -21,7 +22,7 @@
 \setlength{\voffset}{-0.6in}
 %
 \title{{\Huge \textbf{量子力学}}\\ {\small Ver. 0.0.1}}
-\author{2sjump\\ \texttt{tw : @2sjump}}
+\author{2sjump\\ \texttt{twitter : @2sjump}}
 \date{\today}
 \begin{document}
 \maketitle
@@ -31,189 +32,125 @@
 
 \setcounter{chapter}{-1} %—–0章から開始
 
-\chapter{まえがき}
-\begin{itemize}
-	\item この教科書は砂川先生の教科書『量子力学』をベースに作成しています。
-	\item (3元)ベクトルは太字で表します。(例：$\bm{x}, \bm{p}$）	 
-	\item 説明は簡素ですので、初学には向かないかもしれません。
-\end{itemize}
+\include{QMtextChap00}
+\include{QMtextChap01}
+%\include{QMtextChap02}
+\chapter{量子力学の一般原理}
+\section{重ね合わせの原理: superpositon principle}
+\subsection{量子力学の成立: Heisenberg の不確定性原理}
+古典力学では、位置と運動量の初期条件：$\bm{x}(0), \bm{p}(0)$ を与えることで、その後の時間発展$\bm{x}(t),\ \bm{p}(t)$ を記述できることを暗に認めていた。しかし、量子力学では粒子は波動として存在するため、波動関数の広がっている空間の微小領域$\Delta x$に存在する粒子の数には$\pm 1$程度のばらつきがある。
 
-\chapter{量子力学ことはじめ}
-\begin{abstract}
-	この章では、量子力学が適用されるスケールについて、具体的な定数を用いて説明していきます。
-\end{abstract}
-
-
-\section{光の粒子性・電子の波動性}
-
-\subsection{Compton 効果}
-光の粒子性から、その粒子を  \textbf{光子, photon}  という。
-
-角振動数$\omega$ , 波数$k$ であるとき、その電磁波は
+すなわち、：
 \[
-	E = \hbar \omega,\ \ p = \hbar k
+	\left( \frac{\Delta k}{2\pi} \right) \Delta x \sim 1
 \]
-である photon の集団であるとみなす。
-
-自由電子にX線を照射する。
-エネルギーと運動量の保存から、
-\[
-	mc^2 + \hbar\omega = \sqrt{p^2c^2 + m^2c^4} + \hbar \omega',\ \ \hbar \bm{k} = \hbar \bm{k'} + \bm{k}'
-\]
-
-$\bm{p}$の消去により、
-
-\[
-	\Delta \lambdabar := \lambda - \lambda' = \lambdabar_c(1-\cos \theta)
-\]
-
-ここで \textbf{Compton 波長} :
-\[
-	\lambdabar_c = \frac{\hbar}{mc} \sim 10^{-13}\ \mathrm{m}
-\]
-を定義した。これは電子スケールの世界の基本の長さの単位となる。
-\vspace{0.2in} \\*
-
-\subsection{Bohr モデル}
-量子条件：
-\[
-	mrv = n\hbar,\ \ \ n = 1,2,3,...
-\]
-振動数条件：
-\[
-	\hbar \omega_0 = E_{n'} - E_n
-\]
-電子の運動方程式(EoM: Equation of Mortion)：
-\[
-	m \frac{v^2}{r} = \frac{e^2}{4\pi \epsilon_0^2} \frac{1}{r^2}
-\]
-これらの式より、
-\[
-	r_n = \left( \frac{\lambdabar_c}{\alpha} \right) n^2
-\]
-ここで、\textbf{微細構造定数, fine-structure constant} ：
-\[
-	\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \sim \frac{1}{137}
-\]
-を定義した。微細構造定数は、電磁場にはたらく力、すなわち電磁相互作用の強さをあらわす定数である。\\
-$n=1$ としたときの半径：
-\[
-	a_0 = \frac{\lambdabar}{\alpha} \sim 5 \times 10^{-11}\ \mathrm{m}
-\]
-は \textbf{Bohr 半径} と呼ばれる。
-
-定常状態のエネルギー：
-\begin{eqnarray*}
-	E_n &=& \frac{1}{2}mv_n^2 - \frac{1}{4\pi\epsilon_0} \frac{e^2}{r_n} \\
-	&=& \left( -\frac{mc^2}{2} \right) \frac{\alpha^2}{n^2}
-\end{eqnarray*}
-とくに$E_n \propto n^{-2}$ である。$n=1$をとくに、\textbf{Rydberg Energy} とよび、様々な表現がある。
-\[
-	E_{Ryd} := |E_{n=1}| = \left( -\frac{mc^2}{2} \right) \alpha^2
-	= \frac{e^2}{8\pi\epsilon_0 a_0}
-	= \left( \frac{\hbar^2}{2m} \right) \frac{1}{a_0^2}
-	\sim 13.61 eV
-\]
-
-\subsection{電子の波動性}
-粒子であると考えられた電子もまた、波としての性質をもつ（\textbf{電子波}）。
-
-電子の運動量の値を決める。 \textbf{Einstein-de Broglie の関係}：
+である。両辺に $\hbar$ をかけて、Einstein-de Broglie の関係：
 \[
 	p = \frac{\hbar}{\lambdabar}
 \]
-より、電子波の波長$\lambdabar$を測定すれば運動量がわかる。
+をもちいて、
+\[
+	\Delta p \Delta x \sim h \ \ \ : \mathrm{Heisenberg's\ uncertainty\  principle}
+\]
+となる。これは、位置と運動量について、同時刻に確定値を与えることを禁止するものである。
+
+この事実は Born の確率解釈が大切なことを意味している。
+
+今後は位置の表記に、$\bm{x}$ を使う代わりに、 $\bm{q}$ を使う。これは、表記上の都合に過ぎないが、一般に正準な変数の組として $q,\ p$ を使うことが多く、本書でもそれに倣ったためである。
+
+\hrulefill
+
+\subsection{離散固有値}
+ある状態を表す関数 $\phi(q)$ があり、演算子$F$を作用させて新しい関数$F\phi(q)$を作ることを考える。都合のよい関数 $\phi(q)$ であれば、ある比例係数$f$をもちいて、
+\[ F\phi_n(q) = f_n \phi_n(q)\]
+とかけるだろう。 ここでは、そのような都合の良い関数が複数個あることを考慮して、添字$n$を付している。
+
+このとき、関数 $\phi_n, f_n$ をそれぞれ、演算子$F$の\textbf{固有関数(eigen function), 固有値(eigenvalue(s))}とよぶ。
 \\
 
-\section{Schr\"odinger 方程式(S-eq.)}
-平面波：
-\begin{eqnarray*}
-	\psi(\bm{r},t) &=& a \exp [\ i\ (\innerprod{k}{r} - \omega t)\ ] \\ \\
-	&\downarrow & \mathrm{substitute.}\ \  E=\hbar \omega, \bm{p}=\hbar\bm{k} \\ \\
-	\psi(\bm{r},t) &=& a \exp [\ i\ \left( \innerprod{p'}{r}/\hbar - (\bm{p'}^2/2m) t/\hbar \right) \ ]
-\end{eqnarray*}
-これは以下の波動方程式の解である。
-\[
-	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
-\]
-ここで、古典論に対して以下の置き換えをする(\textbf{量子化の手続き})。
-\[
-	E \rightarrow i\hbar \partialder{}{t}, \ \ p_w \rightarrow \frac{\hbar}{i} \partialder{}{w}\ \ (w = x, y, z)
-\]
-先の波動方程式は、\textbf{Schr\"odinger 方程式}（以降、\textbf{S-eq.}と略記）： 
-\[
-	i\hbar \partialder{\psi}{t} = H\psi
-\]
-となる。ここで古典論からの類推により、\textbf{Hamiltonian}とよばれる演算子は、
-\[
-	H = \frac{-\hbar^2}{2m} \nabla^2 +V(\bm{r})
-\]
-と与えられる。
+\textcolor{blue}{
+この後の部分について、以下の事項についての説明を省略します。
+\begin{itemize}
+	\item 演算子に対応する物理量を測定すると、その固有値はかならず実数値を返す。
+	\item 重ね合わせの原理：どれかひとつの固有値$f_n$が返される。
+	\item 観測によってひとつの値を得ると、状態はその固有値に対応する状態に転移している。
+	\item その転移確率は展開係数$a_n$の絶対値の2乗$|a_n|^2 = a^* a$である。
+	\item 完全系
+	\item オブサーバブル
+	\item 期待値
+	\item エルミート演算子($A^\dagger = A$であるような演算子$A$をエルミート演算子と呼ぶ)
+\end{itemize}
+}
 
-\section{Born の確率解釈}
-波動関数$\psi(\bm{r},t)$は電子の存在確率を与える確率波と解釈する。
-すなわち、
-\[
-	[
-	\mathrm{Probability\ of\ an\ }e^-\ \mathrm{exist\ in\ }\mathrm{d}^3 r\ \mathrm{near\ } \bm{r}]
-	= |\psi(\bm{r},t)|^2 \mathrm{d}^3 r
-\]
-である。
+\hrulefill
 
-S-eq.：
-\[
-	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
-\]
-と、その複素共役(complex conjugate(c.c.))：
-\[
-	-i\hbar \partialder{\psi^\ast}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi^\ast
-\]
-から、
-\[
-	\partialder{}{t} \left( \psi^\ast \psi \right)
-	= \frac{-\hbar}{2mi} \nabla \cdot \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]
-\]
-となり、ここで\textbf{確率密度}：
-\[
-	\rho :=  \psi^\ast \psi = | \psi |^2
-\]
-および \textbf{確率の流れ}：
-\[\bm{j} := \frac{-\hbar}{2mi}\ \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]\]
-を定義すれば、さきの式は\textbf{確率の保存則}：
-\[\partialder{\rho}{t} + \innerprod{\nabla}{j} = 0\]
-を意味する。
 
-\section{定常状態・境界条件}
-\textbf{定常状態}とは、波動が進行せず、振幅のみが時間変化する波の状態である。
-このとき、波動関数は、
-\[ \psi(\bm{r}, t) = \phi(\bm{r}) f(t) \]
-とかける。
+\subsection{デルタ関数}
+under construction...
 
-S-eq.は、任意の$\bm{r}, t$に対して成り立つことを課すことにより、ある定数$E$をもちいて、
+\subsection{縮退のある場合}
+under construction...
+
+\hrulefill
+\subsection{行列表示}
+固有値方程式：\[ F\phi_n(q) = f_n \phi_n(q)\]
+左から$\phi_m^*(q)$をかけて積分する。
 \[
-	i\hbar \derivative{f(t)}{t} = Ef(t),\ \ \ H\phi(\bm{r}) = E\phi(\bm{r})
+	\left[ RHS \right] \rightarrow \int \mathrm{d}q\  f_n \phi_m^* \phi_n = f_n \delta_{m,n}
+\]
+\[
+	\left[ LHS \right] \rightarrow \int \mathrm{d}q\ \phi_m^* F \phi_n =: F_{m,n}
+\]
+これを行列で書けば、
+\[
+	\begin{pmatrix}
+		F_{11} & F_{12} & \cdot \\
+		F_{21} & F_{22} & \cdot \\
+		\cdot & \cdot & \cdot \\
+	\end{pmatrix}
+	= 
+	\begin{pmatrix}
+		f_1 & & \\
+		 & f_2 & \\
+		 & & \cdot \\
+	\end{pmatrix}
 \]
 となる。
 
-これより、
+\subsection{2状態系の固有値問題}
+
+\subsection{エネルギー表示と位置表示}
+
+\hrulefill 
+
+\section{状態ベクトルとブラ・ケット記法}
+前のセクションの固有値方程式：\[ F\phi_n(q) = f_n \phi_n(q)\]の固有関数を抽象的に位置$q$についてならべ、
 \[
-	\psi(\bm{r}, t) = \phi(\bm{r}) \exp (-iEt/\hbar)
+	\bm{\phi}_n = 
+	\begin{pmatrix}
+		\phi_n(q_1) \\
+		\phi_n(q_2) \\
+		\vdots \\
+		\phi_n(q_\infty) \\
+	\end{pmatrix}
 \]
-とかけて、$E$はエネルギーに相当することがわかる。
+のようなベクトルを考える。厳密には位置変数は連続的な値を取るため、無限次元のこのようなベクトルで書くのは正確ではない。
 
-S-eq. は線型方程式であるから、固有状態$\{ \psi_i \}$の線形和である$\psi$もまた解となる。
+上のようなベクトルを考えると、
+\[
+	\bm{\phi}_m^* \bm{\phi}_n = 
+	\sum_i \phi_m^* (q_i) \phi_n (q_i) \rightarrow \int \mathrm{d}q\ \phi_m^*(q) \phi_n(q) = \delta_{m.n}
+\]
+も理解されるだろう。
 
-Hamilitonian の固有値$E_i$ 固有関数$\psi_i$ を求めることを\textbf{固有値問題}と呼ぶ。解を求めるためには境界条件を設定する必要がある。
+ここで、$\bm{\phi}_n$は、位置$q$に無関係であった。そこで、このような関数を集めたベクトルについて、
+\[\bm{\phi}_m^* \rightarrow \bra{m} \ \ \ \mathrm{bra\ vector}\]
+\[\bm{\phi}_m \rightarrow \ket{n}   \ \ \ \mathrm{ket\ vector}\]
+とかくことにする。
 
-\begin{itemize}
-	\item 無限遠方で波動関数が0になる。：$\phi(\bm{r}\ \rightarrow\ \infty) = 0 $
-	\item ポテンシャル関数があるところで不連続である。：
-	S-eq. $\rightarrow$
-	\[
-			\dderivative{\phi(x)}{x} = \frac{-2m}{\hbar} [E-V(x)] \phi(x)
-	\]
-\end{itemize}
-
+そうすれば、上の式は、
+\[	\braket{m|n} = \delta_{m,n} \]
+となる。
 \begin{thebibliography}{20}
  \bibitem{Sunagawa} 砂川重信、量子力学、岩波書店、1991.
  \bibitem{Shimizu} 清水明、新版 量子論の基礎 その本質のやさしい理解のために、サイエンス社、2003.

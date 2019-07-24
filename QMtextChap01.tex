@@ -1,0 +1,185 @@
+\chapter{量子力学ことはじめ}
+\begin{abstract}
+	この章では、量子力学が適用されるスケールについて、具体的な定数を用いて説明していきます。
+\end{abstract}
+
+\section{光の粒子性・電子の波動性}
+
+\subsection{Compton 効果}
+光の粒子性から、その粒子を  \textbf{光子, photon}  という。
+
+角振動数$\omega$ , 波数$k$ であるとき、その電磁波は
+\[
+	E = \hbar \omega,\ \ p = \hbar k
+\]
+である photon の集団であるとみなす。
+
+ここで$\hbar$ は\textbf{Planck} 定数$h$によって定義される値であり、：
+\[
+	h = 6.626\ 070\ 15 \times 10^{-34} \mathrm{J\ s}\ \ \ (\mathrm{exactly})
+\]
+\[
+	\hbar = \frac{h}{2\pi}
+\]
+である。$\hbar$は換算 Planck 定数、または Dirac 定数と呼ばれる。
+\\
+
+自由電子にX線を照射する。
+エネルギーと運動量の保存から、
+\[
+	mc^2 + \hbar\omega = \sqrt{p^2c^2 + m^2c^4} + \hbar \omega',\ \ \hbar \bm{k} = \hbar \bm{k'} + \bm{k}'
+\]
+
+$\bm{p}$の消去により、
+
+\[
+	\Delta \lambdabar := \lambda - \lambda' = \lambdabar_c(1-\cos \theta)
+\]
+
+ここで \textbf{Compton 波長} :
+\[
+	\lambdabar_c = \frac{\hbar}{mc}  = 3.862 \times 10^{-13}\ \mathrm{m}
+\]
+を定義した。これは電子スケールの世界の基本の長さの単位となる。
+\vspace{0.2in} \\*
+
+\subsection{Bohr モデル}
+量子条件：
+\[
+	mrv = n\hbar,\ \ \ n = 1,2,3,...
+\]
+振動数条件：
+\[
+	\hbar \omega_0 = E_{n'} - E_n
+\]
+電子の運動方程式(EoM: Equation of Mortion)：
+\[
+	m \frac{v^2}{r} = \frac{e^2}{4\pi \epsilon_0^2} \frac{1}{r^2}
+\]
+これらの式より、
+\[
+	r_n = \left( \frac{\lambdabar_c}{\alpha} \right) n^2
+\]
+ここで、\textbf{微細構造定数, fine-structure constant} ：
+\[
+	\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \sim \frac{1}{137}
+\]
+を定義した。微細構造定数は、電磁場にはたらく力、すなわち電磁相互作用の強さをあらわす定数である。\\
+$n=1$ としたときの半径：
+\[
+	a_0 = \frac{\lambdabar}{\alpha} \sim 5 \times 10^{-11}\ \mathrm{m}
+\]
+は \textbf{Bohr 半径} と呼ばれる。
+
+定常状態のエネルギー：
+\begin{eqnarray*}
+	E_n &=& \frac{1}{2}mv_n^2 - \frac{1}{4\pi\epsilon_0} \frac{e^2}{r_n} \\
+	&=& \left( -\frac{mc^2}{2} \right) \frac{\alpha^2}{n^2}
+\end{eqnarray*}
+とくに$E_n \propto n^{-2}$ である。$n=1$をとくに、\textbf{Rydberg Energy} とよび、様々な表現がある。
+\[
+	E_{Ryd} := |E_{n=1}| = \left( -\frac{mc^2}{2} \right) \alpha^2
+	= \frac{e^2}{8\pi\epsilon_0 a_0}
+	= \left( \frac{\hbar^2}{2m} \right) \frac{1}{a_0^2}
+	\sim 13.61 eV
+\]
+
+\subsection{電子の波動性}
+粒子であると考えられた電子もまた、波としての性質をもつ（\textbf{電子波}）。
+
+電子の運動量の値を決める。 \textbf{Einstein-de Broglie の関係}：
+\[
+	p = \frac{\hbar}{\lambdabar}
+\]
+より、電子波の波長$\lambdabar$を測定すれば運動量がわかる。
+\\
+
+\section{Schr\"odinger 方程式(S-eq.)}
+平面波：
+\begin{eqnarray*}
+	\psi(\bm{r},t) &=& a \exp [\ i\ (\innerprod{k}{r} - \omega t)\ ] \\ \\
+	&\downarrow & \mathrm{substitute.}\ \  E=\hbar \omega, \bm{p}=\hbar\bm{k} \\ \\
+	\psi(\bm{r},t) &=& a \exp [\ i\ \left( \innerprod{p'}{r}/\hbar - (\bm{p'}^2/2m) t/\hbar \right) \ ]
+\end{eqnarray*}
+これは以下の波動方程式の解である。
+\[
+	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
+\]
+ここで、古典論に対して以下の置き換えをする(\textbf{量子化の手続き})。
+\[
+	E \rightarrow i\hbar \partialder{}{t}, \ \ p_w \rightarrow \frac{\hbar}{i} \partialder{}{w}\ \ (w = x, y, z)
+\]
+先の波動方程式は、\textbf{Schr\"odinger 方程式}（以降、\textbf{S-eq.}と略記）： 
+\[
+	i\hbar \partialder{\psi}{t} = H\psi
+\]
+となる。ここで古典論からの類推により、\textbf{Hamiltonian}とよばれる演算子は、
+\[
+	H = \frac{-\hbar^2}{2m} \nabla^2 +V(\bm{r})
+\]
+と与えられる。
+
+\section{Born の確率解釈}
+波動関数$\psi(\bm{r},t)$は電子の存在確率を与える確率波と解釈する。
+すなわち、
+\[
+	[
+	\mathrm{Probability\ of\ an\ }e^-\ \mathrm{exist\ in\ }\mathrm{d}^3 r\ \mathrm{near\ } \bm{r}]
+	= |\psi(\bm{r},t)|^2 \mathrm{d}^3 r
+\]
+である。
+
+S-eq.：
+\[
+	i\hbar \partialder{\psi}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi
+\]
+と、その複素共役(complex conjugate(c.c.))：
+\[
+	-i\hbar \partialder{\psi^\ast}{t} = \frac{-\hbar^2}{2m} \nabla^2 \psi^\ast
+\]
+から、
+\[
+	\partialder{}{t} \left( \psi^\ast \psi \right)
+	= \frac{-\hbar}{2mi} \nabla \cdot \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]
+\]
+となり、ここで\textbf{確率密度}：
+\[
+	\rho :=  \psi^\ast \psi = | \psi |^2
+\]
+および \textbf{確率の流れ}：
+\[\bm{j} := \frac{-\hbar}{2mi}\ \left[ \psi^\ast \cdot \nabla\psi - \nabla\psi^\ast \cdot \psi \right]\]
+を定義すれば、さきの式は\textbf{確率の保存則}：
+\[\partialder{\rho}{t} + \innerprod{\nabla}{j} = 0\]
+を意味する。
+
+\section{定常状態・境界条件}
+\textbf{定常状態}とは、波動が進行せず、振幅のみが時間変化する波の状態である。
+このとき、波動関数は、
+\[ \psi(\bm{r}, t) = \phi(\bm{r}) f(t) \]
+とかける。
+
+S-eq.は、任意の$\bm{r}, t$に対して成り立つことを課すことにより、ある定数$E$をもちいて、
+\[
+	i\hbar \derivative{f(t)}{t} = Ef(t),\ \ \ H\phi(\bm{r}) = E\phi(\bm{r})
+\]
+となる。
+
+これより、
+\[
+	\psi(\bm{r}, t) = \phi(\bm{r}) \exp (-iEt/\hbar)
+\]
+とかけて、$E$はエネルギーに相当することがわかる。
+
+S-eq. は線型方程式であるから、固有状態$\{ \psi_i \}$の線形和である$\psi$もまた解となる。
+
+Hamilitonian の固有値$E_i$ 固有関数$\psi_i$ を求めることを\textbf{固有値問題}と呼ぶ。解を求めるためには境界条件を設定する必要がある。
+
+具体的には、無限遠方で波動関数が0になるとき、$\phi(\bm{r}\ \rightarrow\ \infty) = 0 $を設定する。また、ポテンシャル関数があるところで不連続であるとき、
+	S-eq. $\rightarrow
+	\dderivative{\phi(x)}{x} = \frac{-2m}{\hbar} [E-V(x)] \phi(x)
+	$
+とするなどである。
+\\
+
+\section{1次元の問題}
+砂川[1]ではこのセクションで1次元の Schr\"odinger の固有値方程式の解き方を一通り触れますが、本テキストでは省略します。
